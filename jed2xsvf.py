@@ -3,10 +3,10 @@
 # into an XSVF file that erases, programs and verifies the device.
 #
 # The XSVF is intended for an XSVF player such as xsvfduino
-# (https://github.com/f1ac0/xsvfduino), which uses Xilinx's reference
+# (https://github.com/wschutzer/xsvfduino), which uses Xilinx's reference
 # XAPP058 v5.01 player code.
 #
-# Copyright (C) 2026 SanPollo
+# Copyright (C) 2026 Nick J. Date.
 #
 # The JTAG programming sequence is a transcription of the XC9500XL
 # algorithm in xc3sprog (progalgxc95x.cpp, jtag.cpp), copyright (C)
@@ -52,11 +52,13 @@
 #   through Update-DR, which would disturb the 50-bit program register.
 #   Instead, xc3sprog's waits are used (lengthened by --scale) and each
 #   status is checked once.
-# - xsvfduino's waitTime() issues one TCK pulse per requested microsecond
-#   instead of measuring time. If the Blue Pill clocks TCK faster than
+# - Players differ in how they wait. wschutzer's xsvfduino measures real time,
+#   but f1ac0's fork (https://github.com/f1ac0/xsvfduino) issues one TCK pulse
+#   per requested microsecond instead. If that fork clocks TCK faster than
 #   1 MHz, every wait is shorter in real time than requested. --scale
-#   multiplies every wait to compensate; the default of 4 keeps the real
-#   waits at or above xc3sprog's as long as TCK does not exceed 4 MHz.
+#   multiplies every wait to compensate; the default of 4 keeps the real waits
+#   at or above xc3sprog's as long as TCK does not exceed 4 MHz. With a player
+#   that measures time, --scale 1 is enough.
 # - The XAPP058 player also applies the current XRUNTEST wait after XSIR,
 #   and compares TDO on every XSDR using the last XSDRTDO expected value
 #   and the current XTDOMASK. This script therefore sets XRUNTEST to 0

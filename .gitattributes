@@ -1,0 +1,9 @@
+# Keep LF line endings in all text files, on every platform.
+* text=auto eol=lf
+
+# JEDEC files: the transmission checksum covers every byte, including
+# the line endings, so they must never be converted.
+*.jed binary
+
+# XSVF files are binary JTAG command streams.
+*.xsvf binary
