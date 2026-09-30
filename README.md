@@ -16,7 +16,7 @@
 
 ## About
 
-`jed2xsvf` converts a Xilinx XC9572XL JEDEC programming file (`.jed`) into an XSVF file that can be used with a utility such as [xsvfduino](https://github.com/f1ac0/xsvfduino), to erase and program a CPLD in combination with an STM32 "Blue Pill" board.
+`jed2xsvf` converts a Xilinx XC9572XL JEDEC programming file (`.jed`) into an XSVF file that can be used with a utility such as [xsvfduino](https://github.com/wschutzer/xsvfduino), to erase and program a CPLD in combination with an STM32 "Blue Pill" board.
 
 <br />
 
